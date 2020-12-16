@@ -1,0 +1,1 @@
+web: gunicorn afisha.wsgi --log-file -
