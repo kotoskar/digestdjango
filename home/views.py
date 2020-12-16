@@ -46,11 +46,15 @@ def postview(request):
     page = int(request.GET.get('page', 1))
     link = request.GET.get('link')
     text = text_of_sbor_article(link)
+    covidstats = covid()
 
     data = {
         'page' : page,
         'link' : link,
         'title' : text['title'],
         'text' : text['text'],
+        'sbor' : covidstats['sbor'],
+        'oblzar' : covidstats['oblzar'],
+        'oblheal' : covidstats['oblheal']
     }
     return render(request, 'home/postview.html', data)
