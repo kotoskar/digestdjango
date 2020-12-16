@@ -338,14 +338,7 @@ a:hover{
     }
     .buttons{
         width: 100%;
-        height: 40%;
-    }
-    .buttons ul li{
-        width: 25%;
-    }
-    .buttons ul li a{
-        line-height: 115px;
-        font-size: 30px;
+        height: 45%;
     }
     #covidstats{
         height: 45%;
