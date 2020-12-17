@@ -186,7 +186,7 @@ a:hover{
     overflow: scroll;
 }
 
-.article .main img{
+.article .main .img{
     height: 225px;
     width: 400px;
     margin: 0px 10px;
@@ -350,14 +350,10 @@ a:hover{
     }
     .article .main{
         flex-direction: column;
-        height: 400px;
     }
     .article .main img{
         width: 100%;
         height: 325px;
-    }
-    .article .main .info{
-        font-size: 30px;
     }
     #covidstats{
         height: 45%;
