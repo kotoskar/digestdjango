@@ -350,7 +350,7 @@ a:hover{
     }
     .article .main{
         flex-direction: column;
-        height: 550px;
+        height: 400px;
     }
     .article .main img{
         width: 100%;

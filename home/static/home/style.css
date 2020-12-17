@@ -350,7 +350,7 @@ a:hover{
     }
     .article .main{
         flex-direction: column;
-        height: 400px;
+        height: 550px;
     }
     .article .main img{
         width: 100%;
@@ -369,7 +369,7 @@ a:hover{
         font-size: 35px;
     }
     .article{
-        min-height: 500px;
-        max-height: 700px;
+        min-height: 700px;
+        max-height: 900px;
     }
 }
