@@ -57,7 +57,6 @@ ul li:hover{
     -moz-box-shadow:    8px 8px 30px 0px rgba(50, 50, 50, 0.75);
     box-shadow:         8px 8px 30px 0px rgba(50, 50, 50, 0.75);
 }
-
 a {
     text-decoration: none;
     height: 100%;
@@ -177,7 +176,7 @@ a:hover{
 .article .main{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     min-height: 225px;
 }
 
@@ -296,10 +295,6 @@ a:hover{
     line-height: 50px;
 }
 
-.page_text{
-    font-size: 25px;
-    text-align: center;
-}
 
 @keyframes text {
     0%{

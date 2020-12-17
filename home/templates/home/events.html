@@ -1,0 +1,34 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <div class="menu">
+        <ul>
+            <li> <a href="{% url 'events' %}?page={{pre_num}}">←</a> </li>
+            {% for ind in pages %}
+            {% if ind == num %}
+            <li style="border-color: #96e674; border-width:4px; border-style:dashed"> <a href="{% url 'events' %}?page={{ind}}">{{ind}}</a> </li>
+            {% else %}
+            <li> <a href="{% url 'events' %}?page={{ind}}">{{ind}}</a> </li>
+            {% endif %}
+            {% endfor %}
+            <li> <a href="{% url 'events' %}?page={{next_num}}">→</a> </li>
+        </ul>
+    </div>
+
+
+
+    <div class="menu">
+        <ul>
+            <li> <a href="{% url 'events' %}?page={{pre_num}}">←</a> </li>
+            {% for ind in pages %}
+            <hr>
+            {% if ind == num %}
+            <li style="border-color: #96e674; border-width:4px; border-style:dashed"> <a href="{% url 'events' %}?page={{ind}}">{{ind}}</a> </li>
+            {% else %}
+            <li> <a href="{% url 'events' %}?page={{ind}}">{{ind}}</a> </li>
+            {% endif %}
+            {% endfor %}
+            <li> <a href="{% url 'events' %}?page={{next_num}}">→</a> </li>
+        </ul>
+    </div>
+{% endblock %}
