@@ -54,9 +54,8 @@ def parsesbor(page):
 
         for i in range(len(info)):
             info[i] = info[i].replace(dates[i], '')
-            
+
         for i in range(len(dates)):
-            print('{:0>2}'.format(month.index(dates[i].split()[1])))
             dates[i] = '.'.join([dates[i].split()[0], '{:0>2}'.format(month.index(dates[i].split()[1])), dates[i].split()[2]])
 
         articles = []
