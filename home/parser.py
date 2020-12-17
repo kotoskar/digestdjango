@@ -78,59 +78,6 @@ def text_of_sbor_article(url):
         return {'title' : title,
                 'text' : text}
 
-def parsemayak(page):
-    # FIXME:
-    # FIXME:
-    # FIXME:
-    url = 'https://mayaksbor.ru/news/?PAGEN_2={}'.format(page)
-    session = req.Session()
-
-    get = session.get(url, headers = headers)
-
-    scode = get.status_code
-    if scode == 200:
-        print('ok')
-        soup = bs4(get.content, 'html.parser')
-
-        articles = soup.find_all('div', attrs = {'class' : 'col-xs-12 col-sm-6 col-md-3 col-lg-3 article__module article__block__img'})
-        print(articles)
-
-        info = [article.find('div', attrs = {'class' : 'col-xs-12 col-sm-6 col-md-3 col-lg-3 article__module article__block__img'}).text for article in articles]
-        dates = [article.find('div', attrs = {'class' : 'news__list__item-desc-time'}).text for article in articles]
-        images = ['https://mayaksbor.ru/' + article.find('img', attrs = {'class' : 'news__list__item-bg'})['href'] for article in articles]
-
-
-        for i in range(len(info)):
-            info[i] = info[i].replace(dates[i], '')
-            info[i] = info[i].replace('\t', '')
-            info[i] = info[i].replace('\n', '')
-            info[i] = info[i].replace('\r', '')
-            info[i] = info[i].strip()
-            # articles = list(zip(titles,info,dates,images,sources))
-        articles = []
-        for i in range(len(info)):
-            now_set = {
-                'title' : '',
-                'info' : info[i],
-                'date' : dates[i],
-                'image' : images[i],
-                'source' : url
-            }
-            articles += [now_set]
-        return articles
-# def parsecinema():
-#     url = 'http://www.sovremennik.sbor.net/#/seans/'
-#     session = req.Session()
-#     try:
-#         get = session.get(url, headers = headers)
-#     except Exception:
-#         print('An error of URL')
-#     else:
-#         scode = get.status_code
-#         if scode == 200:
-#             print('ok')
-#             soup = bs4(get.content, 'html.parser').prettify()
-#             print(soup)
 headers = {
     'accept' : '*/*'
 }
