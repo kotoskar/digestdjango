@@ -128,11 +128,3 @@ def parsemysbor(page):
 headers = {
     'accept' : '*/*'
 }
-
-#for debug:
-# print(parsesbor(1))
-# print(parsemayak(1))
-# print(parsemysbor(1))
-# print(covid())
-# print(text_of_article('https://sbor.ru/news?id=16843'))
-# print(parse_all(1))
