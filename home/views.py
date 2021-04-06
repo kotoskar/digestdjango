@@ -21,7 +21,7 @@ def parse_all(num):
     for thread in threads:
         thread.start()
 
-    while True in [thread.isAlive() for thread in threads]:
+    while True in [thread.is_alive() for thread in threads]:
         pass
 
     output = {

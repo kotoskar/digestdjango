@@ -15,7 +15,23 @@
         </ul>
     </div>
 
+    <!-- <div class="events">
+        {% for post in news %}
+            <div class="item">
+                <h2 class="title">{{post.title}}</h2>
+                <p class="date">{{post.date}}</p>
+                <div class="main">
+                    <img src="{{post.image}}">
+                    <p class="info">{{post.info}}</p>
+                </div>
+                <div class="sources">
+                    <p class="source"><a href="{{post.source}}" target="_blank">Организатор</a></p>
 
+                    <p class="source"><a href="{% url 'postview' %}?link={{post.source}}&page={{num}}">Подробнее</a></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>  -->
 
     <div class="menu">
         <ul>

@@ -9,7 +9,7 @@ def parse_covid():
 
     scode = get.status_code
     if scode == 200:
-        print('ok')
+        print('covid - ok')
         soup = bs4(get.content, 'html.parser')
         sbor = soup.find('a', attrs = {'class' : 'btn btn-lg cfa-button1'}).text.split()[0]
         oblzar, oblheal = soup.find_all('div', attrs = {'class' : 'covid-panel-view__stat-item-value1'})[:2]
@@ -41,7 +41,7 @@ def parsesbor(page):
 
     scode = get.status_code
     if scode == 200:
-        print('ok')
+        print('sbor - ok')
         soup = bs4(get.content, 'html.parser')
 
         articles = soup.find_all('div', attrs = {'class' : 'itemContainer itemContainerLast'})
@@ -78,7 +78,7 @@ def text_of_article(url):
 
     scode = get.status_code
     if scode == 200:
-        print('ok')
+        print('text - ok')
         soup = bs4(get.content, 'html.parser')
         content = soup.find('div', attrs = {'class' : 'news-view-content'})
         print(content)
@@ -96,7 +96,7 @@ def parsemysbor(page):
 
     scode = get.status_code
     if scode == 200:
-        print('ok')
+        print('mysbor - ok')
         soup = bs4(get.content, 'html.parser')
 
         articles = soup.find_all('div', attrs = {'class' : 'news-item-content'})[::2]
@@ -124,6 +124,49 @@ def parsemysbor(page):
             }
             articles += [now_set]
         return articles
+
+def parse_events():
+    url = 'https://www.sbdks.ru/afisha'
+
+    session = req.Session()
+
+    get = session.get(url, headers = headers)
+
+    scode = get.status_code
+    if scode == 200:
+        print('events - ok')
+        soup = bs4(get.content, 'html.parser')
+
+        events = soup.find_all('li', attrs = {'class' : '_3TBOu _1UgL3'})
+        titles = []
+        for event in events:
+            try:
+                titles += [event.find('a', attrs = {'class' : 'r52AK'}).text]
+            except:
+                titles += [event.find('div', attrs = {'class' : '_1pdZF'}).text]
+        info = [event.find('div', attrs = {'class' : '-JBHS'}).text.replace('\t', '').replace('\n', '').replace('\r', '') for event in events]
+        images = ['https://static.wixstatic.com/media/4bd6fa_d30ef15b2c134ffdb07261330ee56cdd~mv2.png/v1/crop/x_174,y_0,w_2653,h_2483/fill/w_143,h_137,al_c,q_85,usm_0.66_1.00_0.01/%D1%8D%D0%BC%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0_%D0%94%D0%9A.webp' for event in events]
+        dates = [event.find('div', attrs = {'class' : '_3x_-L'}).text.replace('\t', '').replace('\n', '').replace('\r', '') for event in events]
+        places = [event.find('div', attrs = {'class' : '_2-GKu'}).text.replace('\t', '').replace('\n', '').replace('\r', '') for event in events]
+        sources = []
+        for event in events:
+            try:
+                sources += [event.find('a', attrs = {'class' : 'r52AK'})['href']]
+            except:
+                sources += ['https://www.sbdks.ru/afisha']
+
+        events = []
+        for i in range(len(titles)):
+            now_set = {
+                'title' : titles[i],
+                'info' : info[i],
+                'image' : images[i],
+                'date' : dates[i],
+                'place' : places[i],
+                'source' : sources[i]
+            }
+            events += [now_set]
+        return events
 
 headers = {
     'accept' : '*/*'
