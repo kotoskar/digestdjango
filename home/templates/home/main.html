@@ -26,9 +26,7 @@
                                 <p class="info">{{post.info}}</p>
                             </div>
                             <div class="sources">
-                                <p class="source"><a href="{{post.source}}" target="_blank">Источник</a></p>
-                                <!-- <p class="source"><a href="Эта функция пока не работает, вернитесь назад">Подробнее</a></p> -->
-                                <p class="source"><a href="{% url 'postview' %}?link={{post.source}}&page={{num}}">Подробнее</a></p>
+                                <p class="source"><a href="{{post.source}}" target="_blank">Подробнее</a></p>
                             </div>
                         </div>
                     {% endfor %}

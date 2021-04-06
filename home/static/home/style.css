@@ -133,14 +133,14 @@ a:hover{
     box-shadow:         8px 8px 30px 0px rgba(50, 50, 50, 0.75);
 }
 
-.news{
+.news, .afisha{
     width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.news h1{
+.news h1, .afisha h1 {
     text-align: center;
     font-size: 35px;
 }
@@ -168,7 +168,7 @@ a:hover{
     font-size: 40px;
 }
 
-.item .date{
+.item .date, .item .place{
     font-size: 20px;
     margin: 0px 50px;
 }
@@ -246,19 +246,6 @@ a:hover{
     width: 80%;
     background-color: #f5f9dd;
     min-height: 500px;
-}
-
-.post {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 80%;
-    margin: 15px 0px;
-    height: 100%;
-}
-
-.post>*{
-    margin: 15px 0px;
 }
 
 .backbutton{

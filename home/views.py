@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .parser import parsesbor,parse_covid,text_of_article,parsemysbor
+from .parser import parsesbor,parse_covid,parsemysbor,parse_events
 import time as t
 import threading as td
 # Create your views here.
@@ -79,27 +79,13 @@ def home(request):
 
     return render(request, 'home/main.html', data)
 
-def postview(request):
-    page = int(request.GET.get('page', 1))
-    link = request.GET.get('link')
-    covidstats = parse_covid()
-
-    data = {
-        'page' : page,
-        'link' : link,
-        'sbor' : covidstats['sbor'],
-        'oblzar' : covidstats['oblzar'],
-        'oblheal' : covidstats['oblheal']
-    }
-    return render(request, 'home/postview.html', data)
-
 def events(request):
     num = int(request.GET.get('page', 1))
     if num<1:
         num = 1
     pages = gen_pages(num)
-    print(pages)
     covidstats = parse_covid()
+    events = parse_events
 
     data = {
         'num' : num,
@@ -110,6 +96,7 @@ def events(request):
         'sbor' : covidstats['sbor'],
         'oblzar' : covidstats['oblzar'],
         'oblheal' : covidstats['oblheal'],
+        'events' :  events
     }
 
     return render(request, 'home/events.html', data)

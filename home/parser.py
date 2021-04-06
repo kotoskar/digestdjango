@@ -65,28 +65,11 @@ def parsesbor(page):
                 'info' : info[i],
                 'date' : dates[i],
                 'image' : images[i],
-                'source' : sources[i]
+                'source' : sources[i],
+                'from' : '"Официальный сайт города Сосновый Бор"'
             }
             articles += [now_set]
         return articles
-
-def text_of_article(url):
-
-    session = req.Session()
-
-    get = session.get(url, headers = headers)
-
-    scode = get.status_code
-    if scode == 200:
-        print('text - ok')
-        soup = bs4(get.content, 'html.parser')
-        content = soup.find('div', attrs = {'class' : 'news-view-content'})
-        print(content)
-        if content == None:
-            content = soup.find('div', attrs = {'class' : 'ja-content-main clearfix'})
-            print(content)
-
-        return content
 
 def parsemysbor(page):
     url = 'https://mysbor.ru/news/?p={}'.format(page*6-6)
@@ -120,7 +103,8 @@ def parsemysbor(page):
                 'info' : info[i],
                 'date' : dates[i],
                 'image' : images[i],
-                'source' : sources[i]
+                'source' : sources[i],
+                'from' : '"Мой Сосновый Бор"'
             }
             articles += [now_set]
         return articles
@@ -163,7 +147,8 @@ def parse_events():
                 'image' : images[i],
                 'date' : dates[i],
                 'place' : places[i],
-                'source' : sources[i]
+                'source' : sources[i],
+                'from' : '"Дворец культуры "Строитель""'
             }
             events += [now_set]
         return events
