@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .parser import parsesbor,parse_covid,parsemysbor,parse_events
+from .parser import parsesbor,parsemysbor,parse_events
 import time as t
 import threading as td
 # Create your views here.
@@ -10,13 +10,10 @@ def parse_all(num):
     def mysborfun(page):
         global mysbor
         mysbor = parsemysbor(page)
-    def covidfun():
-        global covid
-        covid = parse_covid()
+
     threads = [
         td.Thread(target = sborfun, name = sborfun, args = [num]),
-        td.Thread(target = mysborfun, name = mysborfun, args = [num]),
-        td.Thread(target = covidfun, name = covidfun)]
+        td.Thread(target = mysborfun, name = mysborfun, args = [num])]
 
     for thread in threads:
         thread.start()
@@ -26,8 +23,7 @@ def parse_all(num):
 
     output = {
         'sbor' : sbor,
-        'mysbor' : mysbor,
-        'covid' : covid
+        'mysbor' : mysbor
     }
 
     return output
@@ -62,19 +58,13 @@ def home(request):
                     'image' : 'https://ak.picdn.net/shutterstock/videos/1012691939/thumb/1.jpg',
                     'source' : '#'}]
 
-    #covid statistic
-    covidstats = response['covid']
-
     data = {
         'title' : 'Новости',
         'news' : articles,
         'pages' : pages,
         'num' : num,
         'pre_num' : num-1,
-        'next_num' : num+1,
-        'sbor' : covidstats['sbor'],
-        'oblzar' : covidstats['oblzar'],
-        'oblheal' : covidstats['oblheal']
+        'next_num' : num+1
     }
 
     return render(request, 'home/main.html', data)
@@ -84,7 +74,6 @@ def events(request):
     if num<1:
         num = 1
     pages = gen_pages(num)
-    covidstats = parse_covid()
     events = parse_events
 
     data = {
@@ -93,9 +82,6 @@ def events(request):
         'next_num' : num+1,
         'pages' : pages,
         'title' : 'Афиша',
-        'sbor' : covidstats['sbor'],
-        'oblzar' : covidstats['oblzar'],
-        'oblheal' : covidstats['oblheal'],
         'events' :  events
     }
 

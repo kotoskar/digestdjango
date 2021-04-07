@@ -23,7 +23,6 @@
     justify-content: space-around;
 }
 
-
 .buttons{
     width: 55%;
     height: 100%;
@@ -34,7 +33,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style-type: none;
 }
 
@@ -70,34 +69,6 @@ a {
 a:hover{
     animation-name: text;
     animation-duration: 5s;
-}
-
-#covidstats{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 100%;
-}
-
-#covidstats ul{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    list-style-type: none;
-}
-
-#covidstats ul li{
-    animation-name: none;
-    height: 30%;
-    width: 500px;
-    display: flex;
-    background-color: #57b380;
-    justify-content: center;
-    border-radius: 10px;
-    -webkit-box-shadow: 8px 8px 30px 0px rgba(50, 50, 50, 0);
-    -moz-box-shadow:    8px 8px 30px 0px rgba(50, 50, 50, 0);
-    box-shadow:         8px 8px 30px 0px rgba(50, 50, 50, 0);
 }
 
 #content{
@@ -174,10 +145,16 @@ a:hover{
 }
 
 .item .main{
+    min-height: 225px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    min-height: 225px;
+}
+
+.item .main a{
+    height: 100%;
+    line-height: 50px;
 }
 
 .item .main .info{
@@ -269,17 +246,6 @@ a:hover{
     box-shadow:         8px 8px 30px 0px rgba(50, 50, 50, 0.75);
 }
 
-.main{
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.main a{
-    height: 100%;
-    line-height: 50px;
-}
 
 
 @keyframes text {
@@ -311,29 +277,35 @@ a:hover{
 }
 
 @media(max-width: 1045px) {
-    #header .container{
-        flex-direction: column;
-        height: 100%;
-        width: 95%;
-    }
     #header{
         flex-direction: row;
         justify-content: center;
-        height: 300px;
+        height: 200px;
     }
+
+    #header .container{
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        width: 90%;
+    }
+
     .buttons{
         width: 100%;
-        height: 40%;
+        height: 75%;
     }
+
     .buttons ul li{
         width: 25%;
     }
     .buttons ul li a{
-        line-height: 115px;
-        font-size: 30px;
+        font-size: 40px;
+        line-height: 150px;
     }
     .item .main{
+        display: flex;
         flex-direction: column;
+        justify-content: space-between;
         height: 550px;
     }
     .item .main img{
@@ -342,15 +314,6 @@ a:hover{
     }
     .item .main .info{
         font-size: 30px;
-    }
-    #covidstats{
-        height: 45%;
-    }
-    #covidstats ul li{
-        width: 100%;
-    }
-    #covidstats ul li p{
-        font-size: 35px;
     }
     .item{
         min-height: 700px;
