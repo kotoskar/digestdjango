@@ -1,24 +1,6 @@
 import requests as req
 from bs4 import BeautifulSoup as bs4
 
-def parse_covid():
-    url = 'https://2020-koronavirus.ru/goroda/koronavirus-sosnovyj-bor-zabolevshie-koronavirusom-v-sosnovom-boru-poslednie-novosti/'
-    session = req.Session()
-
-    get = session.get(url, headers = headers)
-
-    scode = get.status_code
-    if scode == 200:
-        print('covid - ok')
-        soup = bs4(get.content, 'html.parser')
-        sbor = soup.find('a', attrs = {'class' : 'btn btn-lg cfa-button1'}).text.split()[0]
-        oblzar, oblheal = soup.find_all('div', attrs = {'class' : 'covid-panel-view__stat-item-value1'})[:2]
-        return {
-        'sbor' : sbor,
-        'oblzar' : oblzar.text,
-        'oblheal' : oblheal.text
-        }
-
 def parsesbor(page):
     url = 'https://sbor.ru/news?start={}'.format(page*6-6)
     session = req.Session()
