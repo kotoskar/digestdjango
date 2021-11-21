@@ -41,10 +41,11 @@ def gen_pages(num):
         ind += 1
     return pages
 
+
 def home(request):
-    #page of news
+    # page of news
     num = int(request.GET.get('page', 1))
-    if num<1:
+    if num < 1:
         num = 1
     pages = gen_pages(num)
     response = parse_all(num)
@@ -69,6 +70,7 @@ def home(request):
 
     return render(request, 'home/main.html', data)
 
+
 def events(request):
     num = int(request.GET.get('page', 1))
     if num<1:
@@ -86,3 +88,7 @@ def events(request):
     }
 
     return render(request, 'home/events.html', data)
+
+
+def cinema(request):
+    return render(request, 'home/cinema.html')

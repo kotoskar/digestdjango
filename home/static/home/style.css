@@ -217,13 +217,17 @@ a:hover{
 #footer .container{
     height: 50%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #footer .container a{
     width: 100px;
     height: 100px;
     margin: 0px 35px;
+}
+
+#footer .container .info{
+    color: lightblue;
 }
 
 .item_content{
